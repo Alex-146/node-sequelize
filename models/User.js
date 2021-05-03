@@ -18,12 +18,16 @@ const User = db.define("User", {
   },
   createdAt: {
     allowNull: false,
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   },
   updatedAt: {
     allowNull: false,
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    defaultValue: Sequelize.NOW
   }
+}, {
+  frezeeTableName: true
 });
 
 module.exports = User;
