@@ -3,9 +3,9 @@ const db = require("../config/database");
 
 const User = db.define("User", {
   id: {
-    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
+    allowNull: false,
     type: Sequelize.INTEGER
   },
   name: {
@@ -15,20 +15,11 @@ const User = db.define("User", {
   age: {
     allowNull: false,
     type: Sequelize.INTEGER
-  },
-  createdAt: {
-    allowNull: false,
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW
-  },
-  updatedAt: {
-    allowNull: false,
-    type: Sequelize.DATE,
-    defaultValue: Sequelize.NOW
   }
 }, {
-  tableName: "bullshit",
-  frezeeTableName: true
+  tableName: "users",
+  frezeeTableName: true,
+  timestamps: false
 });
 
 module.exports = User;
