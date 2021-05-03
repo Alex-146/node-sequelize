@@ -27,6 +27,7 @@ const User = db.define("User", {
     defaultValue: Sequelize.NOW
   }
 }, {
+  tableName: "Bullshit",
   frezeeTableName: true
 });
 
