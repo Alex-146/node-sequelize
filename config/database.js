@@ -5,8 +5,19 @@ const config = {
   heroku: process.env.DATABASE_URL
 }
 
-const url = process.env.NODE_ENV === "production" ? config.heroku : config.local;
+const isProduction = process.env.NODE_ENV === "production";
+const url = isProduction ? config.heroku : config.local;
 
-const db = new Sequelize(url);
+// https://coderoad.ru/27687546/Не-удается-подключиться-к-базе-данных-heroku-postgresql-из-приложения
+
+const options = isProduction ? {
+  dialect: "postgres",
+  protocol: "postgres",
+  dialectOptions: {
+    ssl: true
+  }
+ } : {};
+
+const db = new Sequelize(url, options);
 
 module.exports = db;
