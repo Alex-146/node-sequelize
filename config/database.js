@@ -10,11 +10,16 @@ const url = isProduction ? config.heroku : config.local;
 
 // https://coderoad.ru/27687546/Не-удается-подключиться-к-базе-данных-heroku-postgresql-из-приложения
 
+// db.auth error
+// ConnectionError [SequelizeConnectionError]: self signed certificate
+
 const options = isProduction ? {
   dialect: "postgres",
-  protocol: "postgres",
   dialectOptions: {
-    ssl: true
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   }
  } : {};
 
